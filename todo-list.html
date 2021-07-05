@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="myDiv" class = "header">
+        <h2>My TODO-List</h2>
+        <div>
+        <input type="text" id = "myInput" placeholder="Enter your work">
+        <button onclick="newElement()" class="addBtn">Add</button>
+    </div>
+    </div>
+    <div>
+        <ul id = "myUl">
+           <li class="checked">assignment</li>
+            <li>Go for the exercise</li>
+            <li>Good night:)</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <footer>
+            <a href="aboutUs.html" ><p style="font-size: 25px; color: wheat;">About Us</p></a>
+
+            <div class="row">
+                <div class="column">
+                    <i class="fa fa-address-card" aria-hidden="true">&nbsp;&nbsp;&nbsp;Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi delectus iste illo fuga voluptatem dicta voluptate, corrupti accusantium? Nesciunt, deleniti! Ipsa veritatis eos corrupti modi ullam distinctio recusandae adipisci deserunt?</i>
+                </div>
+                <div class="column">
+                    <i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;&nbsp;xyz@gmail.com</i><br>
+                <br><i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;(+91) xxxxxxxxxx</i>
+
+                </div>
+                
+                
+
+            
+            </div>
+           
+
+            
+
+            
+            
+
+        </footer>
+    </div>
+
+    <script>
+
+
+
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+        }
+
+// Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+        }, false);
+
+
+
+
+
+
+
+
+        function newElement() {
+
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write some thing!!!!!!!!!");
+            } else {
+                document.getElementById("myUl").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html> 
